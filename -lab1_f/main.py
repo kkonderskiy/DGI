@@ -173,28 +173,4 @@ matrix_Y_norm = norm_matrix(matrix_W, test_matrix)
 print(matrix_dist(matrix, matrix_Y_norm))
 print(min(matrix_dist(matrix, matrix_Y_norm)))
 
-crit = [100, 0]
-crit_not = [100, 0]
-
-for i in range(n_mas):
-    for j in range(n_mas):
-        if i != j:
-            while coef[j] > 0.05:
-                coef[i] = round(coef[i] + 0.05, 2)
-                coef[j] = round(coef[j] - 0.05, 2)
-
-                result = sum_matrix_step(matrix, matrix_trans, coef)
-
-                matrix_W = matrix_weight(result)
-
-                matrix_Y_norm = norm_matrix(matrix_W, test_matrix)
-
-                crit_not[0] = min(matrix_dist(matrix, matrix_Y_norm))
-                crit_not[1] = coef
-                if crit[0] > min(matrix_dist(matrix, matrix_Y_norm)):
-                    crit[0] = min(matrix_dist(matrix, matrix_Y_norm))
-                    crit[1] = coef
-    coef = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
-    print(crit_not)
-    print(crit)
 
